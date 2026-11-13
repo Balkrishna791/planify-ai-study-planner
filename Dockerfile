@@ -3,7 +3,11 @@
 FROM node:22-alpine AS frontend-build
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
-RUN npm ci
+# The lockfile contains an optional peer used only by a nested styling tool.
+# npm 10 otherwise rejects the clean install, even though the application does
+# not need that peer at runtime. Keep the lockfile deterministic while using
+# npm's documented compatibility mode for optional peers.
+RUN npm ci --legacy-peer-deps
 COPY frontend/ ./
 RUN npm run build
 
