@@ -1,0 +1,211 @@
+/* Layout Components */
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.sidebar {
+  width: 350px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  background: var(--color-sidebar-bg);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-brand {
+  padding: 40px 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+  transition: padding 0.3s;
+}
+
+.sidebar.collapsed .sidebar-brand {
+  padding: 40px 0;
+  align-items: center;
+}
+
+.sidebar-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.sidebar.collapsed .sidebar-scrollable {
+  padding: 30px 10px;
+  display: none; /* Hide complex elements when collapsed */
+}
+
+.main-area {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 30px 50px;
+  margin-left: 350px;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-area.expanded {
+  margin-left: 80px;
+}
+
+/* Header & Nav */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icon-btn {
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  transition: 0.2s;
+}
+
+.icon-btn:hover {
+  background: var(--color-focus-bg);
+}
+
+/* Cards */
+.card {
+  padding: 35px;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Weekly Plan Specific */
+.day-card {
+  border-radius: var(--radius-2xl);
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 1px solid var(--color-border);
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.phase-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .sidebar { width: 280px; }
+  .main-area { margin-left: 280px; padding: 20px 30px; }
+  .top-nav { flex-direction: column; }
+  .header-right { width: 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 768px) {
+  .app-wrapper { flex-direction: column; }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .sidebar.collapsed { width: 100%; }
+  .sidebar-scrollable { display: none; }
+  .main-area { margin-left: 0; height: auto; padding: 20px; }
+  .main-area.expanded { margin-left: 0; }
+  .card { padding: 20px; }
+  .day-card { padding: 20px; }
+}
+
+/* --- Print Styles for PDF Export --- */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Hide UI elements not needed in print */
+  .sidebar, .top-nav, .action-row, .progress-card, button, .skip-btn, .chart-box {
+    display: none !important;
+  }
+  
+  .main-area {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* Optimize layout for A4 */
+  .printable-plan {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .day-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    margin-bottom: 20px !important;
+    padding: 20px !important;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .phase-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Ensure all text is visible on white background */
+  * {
+    color: black !important;
+    border-color: #ddd !important;
+  }
+  
+  .task-meta {
+    color: #555 !important;
+    opacity: 1 !important;
+  }
+}
+.app-loading {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--color-bg, #f8fafc);
+  color: var(--color-text, #0f172a);
+  font-size: 1rem;
+  font-weight: 700;
+}

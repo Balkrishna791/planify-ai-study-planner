@@ -1,0 +1,18 @@
+# Never send local secrets, student data, dependencies or generated bundles to
+# the cloud build context. Docker creates everything it needs reproducibly.
+.git
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite
+*.sqlite3
+venv
+backend/venv
+__pycache__
+backend/__pycache__
+.pytest_cache
+frontend/node_modules
+frontend/build
+coverage
+npm-debug.log*

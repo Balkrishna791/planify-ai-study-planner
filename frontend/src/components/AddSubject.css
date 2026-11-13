@@ -1,0 +1,196 @@
+.addsub-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.addsub-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  opacity: 0.4;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.addsub-error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.addsub-input {
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.addsub-input:focus {
+  border-color: var(--color-accent);
+  background: rgba(255,255,255,0.1);
+}
+
+.addsub-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.addsub-input option {
+  background: var(--color-sidebar-bg);
+  color: white;
+}
+
+.addsub-topic-section {
+  margin-top: 10px;
+  padding: 15px;
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addsub-topic-label {
+  font-size: 10px;
+  font-weight: 800;
+  opacity: 0.5;
+  margin-bottom: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.addsub-topic-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.addsub-topic-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.04);
+  color: white;
+  font-size: 12px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.addsub-topic-input:focus {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.addsub-topic-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.addsub-remove-btn {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.addsub-remove-btn:hover {
+  transform: scale(1.1);
+}
+
+.addsub-remove-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.addsub-add-topic-btn {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border: none;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+  transition: 0.2s;
+}
+
+.addsub-add-topic-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.addsub-add-topic-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.addsub-submit-btn {
+  padding: 16px;
+  background: var(--color-accent);
+  color: #0f172a;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.addsub-submit-btn.success {
+  background: var(--color-success);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+}
+
+.addsub-submit-btn.validating {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  cursor: wait;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.addsub-submit-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* Spinner animation for validation loading */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin-animation {
+  animation: spin 1s linear infinite;
+}

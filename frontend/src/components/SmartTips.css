@@ -1,0 +1,108 @@
+.tips-container {
+  margin-bottom: 30px;
+}
+
+.tips-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tips-icon {
+  color: var(--color-accent);
+}
+
+.tips-label {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-subtext);
+}
+
+.tips-badge {
+  background: var(--color-accent);
+  color: white;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.tip-card {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  border-radius: var(--radius-xl);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.tip-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+}
+
+/* Tip Types */
+.type-critical::before { background: var(--color-danger); }
+.type-critical .tip-icon-wrap { color: var(--color-danger); background: var(--color-danger-bg); }
+
+.type-warning::before { background: var(--color-warning); }
+.type-warning .tip-icon-wrap { color: var(--color-warning); background: var(--color-warning-bg); }
+
+.type-action::before { background: #3b82f6; }
+.type-action .tip-icon-wrap { color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+
+.type-motivation::before { background: var(--color-accent); }
+.type-motivation .tip-icon-wrap { color: var(--color-accent); background: rgba(139, 92, 246, 0.1); }
+
+.type-info::before { background: #10b981; }
+.type-info .tip-icon-wrap { color: #10b981; background: rgba(16, 185, 129, 0.1); }
+
+.tip-icon-wrap {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tip-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tip-title {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.tip-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-subtext);
+}

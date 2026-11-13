@@ -1,0 +1,18 @@
+# Secrets, local databases and machine-specific Python environments must never
+# be committed. Production values belong only in the hosting dashboard.
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite
+*.sqlite3
+venv/
+backend/venv/
+__pycache__/
+backend/__pycache__/
+*.pyc
+
+# Reproducible generated dependencies/build output.
+frontend/node_modules/
+frontend/build/
+.pytest_cache/
