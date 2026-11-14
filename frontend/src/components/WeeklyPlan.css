@@ -69,9 +69,8 @@
 }
 
 .phase-card {
-  flex: 1 1 220px;
   border-radius: var(--radius-2xl);
-  padding: 20px;
+  padding: 18px;
   border: 1px solid var(--color-border);
   background: var(--color-bg);
   min-width: 0;
@@ -146,9 +145,9 @@
 .task-content {
   flex: 1;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
   min-width: 0;
 }
 
@@ -164,8 +163,8 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--color-text);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .task-card.completed .task-name {
@@ -204,6 +203,7 @@
 .task-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 6px;
   flex-shrink: 0;
 }
