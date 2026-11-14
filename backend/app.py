@@ -1055,14 +1055,16 @@ def get_subjects(email):
     subjects_list = []
     if student:
         sid = student["student_id"]
-        subs = conn.execute("SELECT subject_id, subject_name as name, difficulty, exam_date as examDate FROM subjects WHERE student_id=?", (sid,)).fetchall()
+        # Keep database column aliases snake_case. PostgreSQL lowercases
+        # unquoted camelCase aliases, unlike SQLite.
+        subs = conn.execute("SELECT subject_id, subject_name as name, difficulty, exam_date FROM subjects WHERE student_id=?", (sid,)).fetchall()
         for sub in subs:
             tops = conn.execute("SELECT topic_id, topic_name as name FROM topics WHERE subject_id=?", (sub["subject_id"],)).fetchall()
             topics_list = [{"id": t["topic_id"], "name": t["name"]} for t in tops]
             subjects_list.append({
                 "name": sub["name"],
                 "difficulty": sub["difficulty"],
-                "examDate": sub["examDate"],
+                "examDate": sub["exam_date"],
                 "topics": topics_list
             })
     conn.close()
@@ -1545,14 +1547,14 @@ def generate_plan():
         
         subjects = data.get("subjects")
         if not subjects:
-            subs = conn.execute("SELECT subject_id, subject_name as name, difficulty, exam_date as examDate FROM subjects WHERE student_id=?", (sid,)).fetchall()
+            subs = conn.execute("SELECT subject_id, subject_name as name, difficulty, exam_date FROM subjects WHERE student_id=?", (sid,)).fetchall()
             subjects = []
             for sub in subs:
                 tops = conn.execute("SELECT topic_name as name FROM topics WHERE subject_id=?", (sub["subject_id"],)).fetchall()
                 subjects.append({
                     "name": sub["name"],
                     "difficulty": sub["difficulty"],
-                    "examDate": sub["examDate"],
+                    "examDate": sub["exam_date"],
                     "topics": [{"name": t["name"]} for t in tops]
                 })
         
