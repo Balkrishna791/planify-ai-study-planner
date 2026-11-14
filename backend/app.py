@@ -2170,7 +2170,10 @@ def get_reviews(email):
         reviews = conn.execute("""
             SELECT * FROM review_queue
             WHERE student_id=?
-            ORDER BY next_review_date ASC, topic_name COLLATE NOCASE ASC
+            -- LOWER() works in both SQLite and PostgreSQL. SQLite's
+            -- "COLLATE NOCASE" syntax caused the public PostgreSQL service
+            -- to return a 500 error when opening Spaced Repetition.
+            ORDER BY next_review_date ASC, LOWER(topic_name) ASC
         """, (sid,)).fetchall()
         
         res = []
